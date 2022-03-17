@@ -1,32 +1,49 @@
 //create array that will contain pokemon data
-let pokemonList = [
-  {
-    name: 'Bulbasaur',
-    height: 0.7,
-    types: [
-      'grass', 
-      'poision'
-    ]
-  },
-  {
-    name: 'Charmander',
-    height: 0.6,
-    types: [
-      'fire'
-    ]
-  },
-  {
-    name: 'Pikachu',
-    height: 0.4,
-    type: [
-      'electric'
-    ]
-  }
-];
+let pokemonRepository = (function() {
+  
+  let pokemonList = [
+    {
+      name: 'Bulbasaur',
+      height: 0.7,
+      types: [
+        'grass', 
+        'poision'
+      ]
+    },
+    {
+      name: 'Charmander',
+      height: 0.6,
+      types: [
+        'fire'
+      ]
+    },
+    {
+      name: 'Pikachu',
+      height: 0.4,
+      type: [
+        'electric'
+      ]
+    }
+  ];
 
+  function getAll() {
+    return pokemonList;
+  }
+
+  function add(newPoke) {
+    return pokemonList.push(newPoke);
+  }
+
+  return {
+    getAll: getAll,
+    add: add
+  }
+})();
+
+//start container for list of pokemon
 document.write('<div class="pokemen-container">');
 
-pokemonList.forEach( poke => {
+pokemonRepository.getAll().forEach( poke => {
   //List pokemon features
   document.write('<p class="pokemon">' + poke.name + '<br>Height: ${poke.height}')
   //check height
@@ -36,4 +53,5 @@ pokemonList.forEach( poke => {
     document.write('</p>');
   }
 });
+//end poke list container
 document.write('</div>');
