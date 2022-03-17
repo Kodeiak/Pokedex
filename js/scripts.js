@@ -24,13 +24,16 @@ let pokemonList = [
   }
 ];
 
-document.write('<div class="pokemen-container">')
-for (let i = 0; i < pokemonList.length; i++) {
-  document.write('<p class="pokemon">' + pokemonList[i].name + ' (height: ' + pokemonList[i].height + ')');
-  if (pokemonList[i].height > .6) {
-    document.write(' - Wow, that\'s big!</p>');
+document.write('<div class="pokemen-container">');
+
+pokemonList.forEach( poke => {
+  //List pokemon features
+  document.write('<p class="pokemon">' + poke.name + '<br>Height: ${poke.height}')
+  //check height
+  if (poke.height > .6) {
+    document.write('<br>Wow, that\'s big!</p>');
   } else {
     document.write('</p>');
   }
-}
-document.write('</div>')
+});
+document.write('</div>');
