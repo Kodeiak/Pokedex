@@ -1,0 +1,123 @@
+/*
+Colors used
+
+Text Color (Dark Gray): #2B2B2B;
+Primary Color (Yellow): #ffcb05;
+Secondary Color (Dark Blue): #3c5aa6;
+*/
+
+/* :root is a psuedo-class. this pseudo-class targets all elements within <html> */
+:root {
+  --primary-color: #ffcb05;
+  --secondary-color: #3c5aa6;
+  --light-blue: #2a75bb;
+  --lighter-blue: #2a75bb30;
+  --lighter-primary: #ffcb0540;
+  --yellow-shadow: #c7a008;
+  --very-light-gray: #eee;
+  --norm-font-wt: 300;
+  --bold: 700;
+  --sm-text: 16px;
+  --reg-text: 18px;
+  --lg-text: 22px;
+
+}
+
+/* * used as a selector applies to ALL HTML ELEMENTS */
+* {
+  /* total width = (width - padding - border) + padding + border */
+  box-sizing: border-box;
+}
+
+body {
+  /* sans-serif is backup in case Poppins can't be used */
+  font-family: 'Poppins', sans-serif;
+  font-weight: var(--norm-font-wt);
+  line-height: 40px;
+}
+
+header, footer {
+  font-size: var(--reg-text);
+  line-height: 30px;
+}
+
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: font-weight .2s;
+}
+
+
+/* removing until I can figure out how to not have it affect the below
+a:visited {
+  /* selected link 
+  color: #aa8439;
+}
+*/
+
+/* list selectors side by side to apply the same styling to multiple elements */
+a:hover, a:focus {
+  font-weight: var(--bold);
+}
+
+a:active {
+  /* selected link */
+  color: var(--yellow-shadow);
+}
+
+button, .button {
+  /* overwrites browser defaults and resets the border  */
+  border: none;
+  background-color: var(--primary-color);
+  font-family: inherit;
+  font-size: var(--sm-text);
+  /* a:visited is causing .button to show #aa8439 text color */
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 3px;
+  /* solid bottom border 2px wide */
+  border-bottom: 2px solid rgba(0,0,0,0.3);
+  transition-duration: 0.2s opacity;
+}
+
+button:hover, button:focus, .button:hover, .button:focus {
+  /* mouse = hand */
+  cursor: pointer;
+  /*reduces opacity*/
+  opacity: 0.8;
+}
+
+.page-header {
+  display: flex; 
+  width: 100%;
+  border-bottom: 1px solid var(--light-blue);
+  padding: 10px 10px 5px 10px;
+}
+
+.page-header_logo {
+  flex: 0 1 200px;
+  margin: 0 auto;
+}
+
+.pokemon-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+  margin: 20px auto;
+  row-gap: 10px;
+}
+
+.pokemon {
+  width: 200px;
+  height: 100px;
+  border: 2px solid var(--primary-color);
+  border-radius: 5%;
+  background-color: var(--lighter-blue);
+  width: auto;
+  min-height: auto;
+  margin: 0;
+  align-items: center;
+}
+
