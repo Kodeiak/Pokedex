@@ -110,14 +110,16 @@ button:hover, button:focus, .button:hover, .button:focus {
 }
 
 .pokemon {
+  display: flex;
+  align-items: center;
   width: 200px;
-  height: 100px;
+  height: 200px;
   border: 2px solid var(--primary-color);
   border-radius: 5%;
   background-color: var(--lighter-blue);
-  width: auto;
   min-height: auto;
-  margin: 0;
-  align-items: center;
+  margin: 5px;
+  padding: 5px;
+  
 }
 
