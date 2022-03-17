@@ -24,11 +24,13 @@ let pokemonList = [
   }
 ];
 
+document.write('<div class="pokemen-container">')
 for (let i = 0; i < pokemonList.length; i++) {
-  document.write(pokemonList[i].name + ' (height: ' + pokemonList[i].height + ')');
+  document.write('<p class="pokemon">' + pokemonList[i].name + ' (height: ' + pokemonList[i].height + ')');
   if (pokemonList[i].height > .6) {
-    document.write(' - Wow, that\'s big!<br>');
+    document.write(' - Wow, that\'s big!</p>');
   } else {
-    document.write('<br>');
+    document.write('</p>');
   }
 }
+document.write('</div>')
