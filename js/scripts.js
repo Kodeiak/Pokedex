@@ -50,9 +50,29 @@ let pokemonRepository = (function() {
     }
   }
 
+  // add Pokemon to DOM list
+  function addListItem (pokemon) {
+    // create list element variable
+    let list = document.querySelector('.pokemon-list');
+    // create list item element
+    let listItem = document.createElement('li');
+    // create buttons for each pokemon
+    let button = document.createElement('button');
+
+    // add pokemon's name to button
+    button.innerText = `${pokemon.name}`;
+    // add class to buttons
+    button.classList.add('button');
+    // add button to each list item
+    listItem.appendChild(button);
+    // add list item to parent list
+    list.appendChild(listItem);
+  }
+
   return {
     getAll: getAll,
-    add: add
+    add: add,
+    addListItem: addListItem
   }
 })();
 
@@ -63,24 +83,8 @@ console.log(pokemonRepository.getAll());
 // call filterPokemon
 filterPokemon("Eevee");
 
-pokemonRepository.getAll().forEach( poke => {
-  // create list element variable
-  let list = document.querySelector('.pokemon-list');
-  // List pokemon features
-  // create list item element
-  let listItem = document.createElement('li');
-  // create buttons for each poke
-  let button = document.createElement('button');
-
-  // add pokemon's name to button
-  button.innerText = `${poke.name}`;
-  // add class to buttons
-  button.classList.add('button');
-  // add button to each list item
-  listItem.appendChild(button);
-  // add list item to parent list
-  list.appendChild(listItem);
-});
+// call private addListItem function to add the pokemon nav list to page
+pokemonRepository.getAll().forEach( poke => pokemonRepository.addListItem(poke));
 
 
 
