@@ -72,6 +72,7 @@ button, .button {
   background-color: var(--primary-color);
   font-family: inherit;
   font-size: var(--sm-text);
+  width: 200px;
   /* a:visited is causing .button to show #aa8439 text color */
   color: white;
   text-decoration: none;
@@ -101,13 +102,13 @@ button:hover, button:focus, .button:hover, .button:focus {
   margin: 0 auto;
 }
 
-.pokemon-container {
+/* .pokemon-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 20px;
   margin: 20px;
   row-gap: 10px;
-}
+} */
 
 .pokemon {
   display: inline-table;
@@ -117,7 +118,12 @@ button:hover, button:focus, .button:hover, .button:focus {
   border-radius: 5%;
   background-color: var(--lighter-blue);
   min-height: auto;
-  padding: 5px;
-  
 }
 
+.pokemon-list {
+  margin: 0;
+  padding: 0 0 1px 1px;
+  list-style: none;
+  border: 1px solid var(--light-blue);
+  width: 204px;
+}
