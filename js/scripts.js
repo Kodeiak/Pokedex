@@ -1,6 +1,9 @@
 //function to compare object.keys
 const checkProperties = (obj, source) => Object.keys(source).every(key => obj.hasOwnProperty(key));
 
+//function to filter Pokemon List by name
+const filterPokemon = (searchInput) => console.log(pokemonRepository.getAll().filter(pokemon => pokemon.name === searchInput));
+
 //create array that will contain pokemon data
 let pokemonRepository = (function() {
   
@@ -34,6 +37,7 @@ let pokemonRepository = (function() {
     return pokemonList;
   }
 
+  //add additional Pokemon as objects
   function add(newPoke) {
     if (typeof newPoke !== 'object') {
       return alert("Must be an object");
@@ -52,8 +56,12 @@ let pokemonRepository = (function() {
   }
 })();
 
+//add Eevee
 pokemonRepository.add({name: "Eevee", height: 1.0, type: ['normal']})
 console.log(pokemonRepository.getAll());
+
+//call filterPokemon
+filterPokemon("Eevee");
 
 //start container for list of pokemon
 document.write('<div class="pokemon-container">');
