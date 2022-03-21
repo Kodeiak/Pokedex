@@ -1,10 +1,10 @@
-//function to compare object.keys
+// function to compare object.keys
 const checkProperties = (obj, source) => Object.keys(source).every(key => obj.hasOwnProperty(key));
 
-//function to filter Pokemon List by name
+// function to filter Pokemon List by name
 const filterPokemon = (searchInput) => console.log(pokemonRepository.getAll().filter(pokemon => pokemon.name === searchInput));
 
-//create array that will contain pokemon data
+// create array that will contain pokemon data
 let pokemonRepository = (function() {
   
   let pokemonList = [
@@ -32,12 +32,12 @@ let pokemonRepository = (function() {
     }
   ];
 
-  //function to access array of Pokemon
+  // function to access array of Pokemon
   function getAll() {
     return pokemonList;
   }
 
-  //add additional Pokemon as objects
+  // add additional Pokemon as objects
   function add(newPoke) {
     if (typeof newPoke !== 'object') {
       return alert("Must be an object");
@@ -56,28 +56,32 @@ let pokemonRepository = (function() {
   }
 })();
 
-//add Eevee
+// add Eevee
 pokemonRepository.add({name: "Eevee", height: 1.0, type: ['normal']})
 console.log(pokemonRepository.getAll());
 
-//call filterPokemon
+// call filterPokemon
 filterPokemon("Eevee");
 
-//start container for list of pokemon
-document.write('<div class="pokemon-container">');
-
 pokemonRepository.getAll().forEach( poke => {
-  //List pokemon features
-  document.write(`<p class="pokemon"> ${poke.name} <br>Height: ${poke.height}`)
-  //check height
-  if (poke.height > .6) {
-    document.write('<br>Wow, that\'s big!</p>');
-  } else {
-    document.write('</p>');
-  }
+  // create list element variable
+  let list = document.querySelector('.pokemon-list');
+  // List pokemon features
+  // create list item element
+  let listItem = document.createElement('li');
+  // create buttons for each poke
+  let button = document.createElement('button');
+
+  // add pokemon's name to button
+  button.innerText = `${poke.name}`;
+  // add class to buttons
+  button.classList.add('button');
+  // add button to each list item
+  listItem.appendChild(button);
+  // add list item to parent list
+  list.appendChild(listItem);
 });
-//end poke list container
-document.write('</div>');
+
 
 
 
