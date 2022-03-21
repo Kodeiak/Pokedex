@@ -73,11 +73,13 @@ button, .button {
   background-color: var(--primary-color);
   font-family: inherit;
   font-size: var(--sm-text);
-  width: 100%;
+  text-align: left;
+  width: 95%;
   /* a:visited is causing .button to show #aa8439 text color */
   color: white;
   text-decoration: none;
   padding: 10px;
+  margin: 5px;
   border-radius: 3px;
   /* solid bottom border 2px wide */
   border-bottom: 2px solid rgba(0,0,0,0.3);
@@ -118,12 +120,12 @@ main, .pokemon-container {
 } */
 
 .pokemon-list {
-  margin: 0 auto;
+  margin: 0;
   padding: 0 0 1px 1px;
   list-style: none;
   border: 1px solid var(--light-blue);
   height: 100vh;
-  width: 50%;
+  width: 20%;
 }
 
 @media all and (max-width: 768px) {
