@@ -83,7 +83,7 @@ button, .button {
   border-radius: 3px;
   /* solid bottom border 2px wide */
   border-bottom: 2px solid rgba(0,0,0,0.3);
-  transition-duration: 0.2s opacity;
+  transition-duration: 0.2s opacity 0.8;
 }
 
 button:hover, button:focus, .button:hover, .button:focus {
