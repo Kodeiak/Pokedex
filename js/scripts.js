@@ -1,9 +1,6 @@
 // function to compare object.keys
 const checkProperties = (obj, source) => Object.keys(source).every(key => obj.hasOwnProperty(key));
 
-// function to filter Pokemon List by name
-const filterPokemon = (searchInput) => console.log(pokemonRepository.getAll().filter(pokemon => pokemon.name === searchInput));
-
 // create array that will contain pokemon data
 let pokemonRepository = (function() {
   
@@ -52,40 +49,41 @@ let pokemonRepository = (function() {
 
   // add Pokemon to DOM list
   function addListItem (pokemon) {
-    // create list element variable
+    // assign node variables for list, list items and buttons
     let list = document.querySelector('.pokemon-list');
-    // create list item element
     let listItem = document.createElement('li');
-    // create buttons for each pokemon
     let button = document.createElement('button');
 
-    // add pokemon's name to button
+    // give button content and class
     button.innerText = `${pokemon.name}`;
-    // add class to buttons
     button.classList.add('button');
-    // add button to each list item
+
+    // append button to list item and list item to list
     listItem.appendChild(button);
-    // add list item to parent list
     list.appendChild(listItem);
+
+    // listen for button click
+    button.addEventListener('click', showDetails(pokemon));
+  }
+
+  // show Pokemon details 
+  function showDetails(pokemon) {
+    console.log(pokemonList.filter(examinePokemon => examinePokemon.name === pokemon));
   }
 
   return {
     getAll: getAll,
     add: add,
-    addListItem: addListItem
+    addListItem: addListItem,
+    showDetails: showDetails
   }
 })();
 
 // add Eevee
 pokemonRepository.add({name: "Eevee", height: 1.0, type: ['normal']})
-console.log(pokemonRepository.getAll());
-
-// call filterPokemon
-filterPokemon("Eevee");
 
 // call private addListItem function to add the pokemon nav list to page
 pokemonRepository.getAll().forEach( poke => pokemonRepository.addListItem(poke));
-
 
 
 
