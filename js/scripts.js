@@ -1,33 +1,8 @@
-// function to compare object.keys
-const checkProperties = (obj, source) => Object.keys(source).every(key => obj.hasOwnProperty(key));
-
 // create array that will contain pokemon data
 let pokemonRepository = (function() {
   
-  let pokemonList = [
-    {
-      name: 'Bulbasaur',
-      height: 0.7,
-      type: [
-        'grass', 
-        'poision'
-      ]
-    },
-    {
-      name: 'Charmander',
-      height: 0.6,
-      type: [
-        'fire'
-      ]
-    },
-    {
-      name: 'Pikachu',
-      height: 0.4,
-      type: [
-        'electric'
-      ]
-    }
-  ];
+  let pokemonList = [];
+  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
   // function to access array of Pokemon
   function getAll() {
@@ -35,15 +10,15 @@ let pokemonRepository = (function() {
   }
 
   // add additional Pokemon as objects
-  function add(newPoke) {
-    if (typeof newPoke !== 'object') {
+  function add(pokemon) {
+    if (typeof pokemon !== 'object') {
       return alert("Must be an object");
     } 
-    else if (!checkProperties(newPoke, pokemonRepository.getAll()[0])) {
-      alert("Properties do not align.");
-    } 
+    // else if (!checkProperties(pokemon, pokemonRepository.getAll()[0])) {
+    //   alert("Properties do not align.");
+    // } 
     else { 
-      return pokemonList.push(newPoke);
+      return pokemonList.push(pokemon);
     }
   }
 
@@ -63,27 +38,55 @@ let pokemonRepository = (function() {
     list.appendChild(listItem);
 
     // listen for button click
-    button.addEventListener('click', showDetails(pokemon));
+    button.addEventListener('click', () => showDetails(pokemon));
   }
 
   // show Pokemon details 
-  function showDetails(pokemon) {
-    console.log(pokemonList.filter(examinePokemon => examinePokemon.name === pokemon));
+function showDetails(pokemon) {
+  console.log(pokemon.name);
+}
+
+  // load list
+  function loadList() {
+    return fetch(apiUrl).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      json.results.forEach(function (item) {
+        let pokemon = {
+          name: item.name,
+          detailsUrl: item.url
+        };
+        add(pokemon);
+      });
+    }) .catch(function (e) {
+      console.error(e);
+    })
   }
+
+  // load details
 
   return {
     getAll: getAll,
     add: add,
     addListItem: addListItem,
-    showDetails: showDetails
+    showDetails: showDetails,
+    loadList: loadList,
+    // loadDetails: loadDetails
   }
 })();
 
-// add Eevee
-pokemonRepository.add({name: "Eevee", height: 1.0, type: ['normal']})
+// // function to compare object.keys
+// const checkProperties = (obj, source) => Object.keys(source).every(key => obj.hasOwnProperty(key));
 
-// call private addListItem function to add the pokemon nav list to page
-pokemonRepository.getAll().forEach( poke => pokemonRepository.addListItem(poke));
+// // add Eevee
+// pokemonRepository.add({name: "Eevee", height: 1.0, type: ['normal']})
 
+// // call private addListItem function to add the pokemon nav list to page
+// pokemonRepository.getAll().forEach( poke => pokemonRepository.addListItem(poke));
 
+pokemonRepository.loadList().then(function() {
+  pokemonRepository.getAll().forEach(function(pokemon) {
+    pokemonRepository.addListItem(pokemon);
+  });
+});
 
