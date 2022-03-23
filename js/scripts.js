@@ -42,15 +42,16 @@ let pokemonRepository = (function() {
   }
 
   // show Pokemon details 
-function showDetails(pokemon) {
-  console.log(pokemon.name);
-}
+  function showDetails(pokemon) {
+    loadDetails(pokemon).then( () => console.log(pokemon));
+    }
 
   // load list
   function loadList() {
     return fetch(apiUrl).then(function (response) {
       return response.json();
     }).then(function (json) {
+      // json is the parent object found in the API.  .results is a key in that object
       json.results.forEach(function (item) {
         let pokemon = {
           name: item.name,
@@ -64,6 +65,20 @@ function showDetails(pokemon) {
   }
 
   // load details
+  function loadDetails(pokemon) {
+    let url = pokemon.detailsUrl
+    return fetch(url).then(function (response) {
+      return response.json();
+    })
+    // details refers to the object that is returned by the promise in the first then
+    .then(function (details) {
+      pokemon.imageUrl = details.sprites.front_default;
+      pokemon.height = details.height;
+      pokemon.types = details.types;
+    }).catch(function (e) {
+      console.error(e);
+    });
+  }
 
   return {
     getAll: getAll,
@@ -71,7 +86,7 @@ function showDetails(pokemon) {
     addListItem: addListItem,
     showDetails: showDetails,
     loadList: loadList,
-    // loadDetails: loadDetails
+    loadDetails: loadDetails
   }
 })();
 
