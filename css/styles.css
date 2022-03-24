@@ -149,7 +149,8 @@ main, .pokemon-container {
 .modal {
   background: var(--very-light-gray);
   color: var(--secondary-color);
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   text-align: left;
   padding: 15px;
   width: 80%;
@@ -161,12 +162,13 @@ main, .pokemon-container {
 
 .modal > h1 {
   text-align: center;
-  margin-top: 20px;
+  padding: 0;
+  margin: 0;
 }
 
 .modal > img {
   display: block;
-  margin: 0 auto;
+  margin: 10px auto;
   border: 2px solid var(--very-light-gray);
   height: 150px;
   width: auto;
@@ -174,9 +176,11 @@ main, .pokemon-container {
 
 .content-container-element {
   background: var(--lighter-blue);
-  width: 50%;
+  width: 100%;
+  height: 100%;
   min-width: 250px;
   margin: 0 auto;
+  border-radius: 15px;
 }
 
 .content-container-element > p {
@@ -187,9 +191,8 @@ main, .pokemon-container {
   border: none;
   background-color: transparent;
   color: var(--secondary-color);
-  float: right;
   width: fit-content;
-  margin: 0;
+  margin-left: auto;
   padding: 0;
 }
 
