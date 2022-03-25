@@ -48,7 +48,7 @@ let pokemonRepository = (function() {
   // show Pokemon details modal
   function showDetails(pokemon) {
     // console.log(`showDetails pokemon: ${pokemon}`); // [object Object]
-    loadDetails(pokemon).then( () => showModal(pokemon.name, `Height: ${pokemon.height}\n Type: Insert each type here \n`, pokemon.imageUrl)); // ${pokemon.types.forEach(item => item.type.name)}
+    loadDetails(pokemon).then( () => showModal(pokemon.name, `Height: ${pokemon.height}\n Type: ${pokemon.types[0].type.name} \n`, pokemon.imageUrl)); // ${pokemon.types.forEach(item => item.type.name)}
     }
 
   // load list
