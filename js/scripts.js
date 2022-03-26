@@ -26,13 +26,15 @@ let pokemonRepository = (function() {
   // add Pokemon to DOM list
   function addListItem (pokemon) {
     // assign node variables for list, list items and buttons
-    let list = document.querySelector('.pokemon-list');
+    let list = document.querySelector('.list-group');
     let listItem = document.createElement('li');
     let button = document.createElement('button');
 
     // give button content and class
     button.innerText = `${pokemon.name}`;
-    button.classList.add('button');
+    $(button).addClass('btn btn-primary');
+
+    $(listItem).addClass("group-list-item");
 
     // append button to list item and list item to list
     listItem.appendChild(button);
