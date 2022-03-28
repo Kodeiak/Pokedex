@@ -34,7 +34,7 @@ let pokemonRepository = (function() {
     button.innerText = `${pokemon.name}`;
     $(button).addClass('btn btn-primary');
 
-    $(listItem).addClass("group-list-item");
+    $(listItem).addClass("list-group-item  col-lg-4 col-md-6 col-sm-12");
 
     // append button to list item and list item to list
     listItem.appendChild(button);

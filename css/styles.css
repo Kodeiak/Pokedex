@@ -10,9 +10,10 @@ Secondary Color (Dark Blue): #3c5aa6;
 :root {
   --primary-color: #ffcb05;
   --secondary-color: #3c5aa6;
+  --darker-secondary-color: #1E3C88;
   --light-blue: #2a75bb;
-  --lighter-blue: #2a75bb30;
-  --lighter-primary: #ffcb0540;
+  --lighter-blue: #2a75bb15;
+  --lighter-primary: #ffcb0580;
   --yellow-shadow: #c7a008;
   --very-light-gray: #eee;
   --norm-font-wt: 300;
@@ -67,16 +68,35 @@ a:active {
   color: var(--yellow-shadow);
 }
 
+.list-group {
+  flex-direction: row;
+}
+
+.list-group-item {
+  background-color: var(--lighter-blue);
+  border: none;
+  margin: 0;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border: var(--yellow-shadow);
+  color: var(--darker-secondary-color);
+  font-size: var(--lg-text);
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: var(--lighter-primary);
+  color: var(--darker-secondary-color)
+}
+
 button, .button {
   /* overwrites browser defaults and resets the border  */
-  border: none;
-  background-color: var(--primary-color);
   font-family: inherit;
-  font-size: var(--sm-text);
   text-align: left;
-  width: 95%;
+  width: 98%;
   /* a:visited is causing .button to show #aa8439 text color */
-  color: white;
   text-decoration: none;
   padding: 10px;
   margin: 5px;
@@ -85,6 +105,7 @@ button, .button {
   border-bottom: 2px solid rgba(0,0,0,0.3);
   transition: opacity 0.2s; 
   opacity: 0.8;
+  text-transform: capitalize;
 }
 
 button:hover, button:focus, .button:hover, .button:focus {
@@ -120,14 +141,14 @@ main, .pokemon-container {
   min-height: auto;
 } */
 
-.pokemon-list {
+/* .pokemon-list {
   margin: 0;
   padding: 0 0 1px 1px;
   list-style: none;
   border: 1px solid var(--light-blue);
   height: fit-content;
   width: 20%;
-}
+} */
 
 #modal-container {
   display: none;
@@ -198,9 +219,9 @@ main, .pokemon-container {
 }
 
 @media all and (max-width: 768px) {
-  .pokemon-list { 
+  /* .pokemon-list { 
     width: 100%;
-  }
+  } */
 
   .button {
     width: 97%;
