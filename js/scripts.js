@@ -3,7 +3,8 @@ let pokemonRepository = (function() {
   
   let pokemonList = [];
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
-  let modalContainer = document.querySelector('#modal-container');
+  // let modalContainer = document.querySelector('#modal-container');
+  let modal = $('.modal')
 
   // function to access array of Pokemon
   function getAll() {
@@ -33,6 +34,15 @@ let pokemonRepository = (function() {
     // give button content and class
     button.innerText = `${pokemon.name}`;
     $(button).addClass('btn btn-primary');
+    // $(button).attr('{
+    //   'type': 'button',
+    //   'data-bs-toggle': 'modal',
+    //   'data-bs-target': '#pokemon-modal',
+    // }');
+    $(button).attr("type", "button");
+    $(button).attr("data-toggle", "modal");
+    $(button).attr("data-target", "#pokemon-modal");
+
 
     $(listItem).addClass("list-group-item  col-lg-4 col-md-6 col-sm-12");
 
@@ -88,59 +98,14 @@ let pokemonRepository = (function() {
   }
 
   function showModal (title, text, image) {
-    // Clear all existing modal content
-    modalContainer.innerHTML = '';
-
-    // Add modal element
-    let modal = document.createElement('div');
-    modal.classList.add('modal');
-
-    // Add new modal content
-    let closeButtonElement = document.createElement('button');
-    closeButtonElement.classList.add('modal-close');
-    closeButtonElement.innerText = "Close";
-    closeButtonElement.addEventListener('click', hideModal);
-
-    let titleElement = document.createElement('h1');
-    titleElement.innerText = title;
-
-    let contentContainerElement = document.createElement('div');
-    contentContainerElement.classList.add('content-container-element');
-
-    let contentElement = document.createElement('p');
-    contentElement.innerText = text;
-
-    let imageElement = document.createElement('img');
-    imageElement.src = image;
-
-    modal.appendChild(closeButtonElement);
-    modal.appendChild(titleElement);
-    modal.appendChild(imageElement);
-    modal.appendChild(contentContainerElement);
-    contentContainerElement.appendChild(contentElement);
-    modalContainer.appendChild(modal);
-
-    modalContainer.classList.add('is-visible');
-
-    // Allow click out of modal to close
-    modalContainer.addEventListener('click', (e) => {
-      let target = e.target;
-      if (target === modalContainer) {
-        hideModal();
-      }
-    });
-
-    // Allow esc to close modal
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
-        hideModal();
-      }
-    });
-
+    // Clear existing modal header text and body content and add new
+    $('.modal-title').empty().append(title);
+    $('.modal-body_image').attr('src', image);
+    $('.modal-body_text').empty().append(text);
   }
 
 function hideModal () {
-  modalContainer.classList.remove('is-visible');
+  modal.removeClass('is-visible');
 }
 
 // Swipe gestures event listener //

@@ -68,16 +68,6 @@ a:active {
   color: var(--yellow-shadow);
 }
 
-.list-group {
-  flex-direction: row;
-}
-
-.list-group-item {
-  background-color: var(--lighter-blue);
-  border: none;
-  margin: 0;
-}
-
 .btn-primary {
   background-color: var(--primary-color);
   border: var(--yellow-shadow);
@@ -118,7 +108,7 @@ button:hover, button:focus, .button:hover, .button:focus {
 .page-header {
   display: flex; 
   width: 100%;
-  border-bottom: 1px solid var(--light-blue);
+  border-bottom: .5px solid var(--light-blue);
   padding: 10px 10px 5px 10px;
 }
 
@@ -127,7 +117,17 @@ button:hover, button:focus, .button:hover, .button:focus {
   margin: 0 auto;
 }
 
-main, .pokemon-container {
+.list-group {
+  flex-direction: row;
+}
+
+.list-group-item {
+  background-color: var(--lighter-blue);
+  border: none;
+  margin: 0;
+}
+
+main {
   height: 100vh;
 }
 
@@ -150,11 +150,11 @@ main, .pokemon-container {
   width: 20%;
 } */
 
-#modal-container {
+/* .modal {
   display: none;
 }
 
-#modal-container.is-visible {
+.modal.is-visible {
   position: fixed;
   top: 0;
   left: 0;
@@ -165,38 +165,33 @@ main, .pokemon-container {
   overflow: auto;
   display: grid;
   text-align: center;
-}
+} */
 
-.modal {
+.modal-dialog {
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: center;
   background: var(--very-light-gray);
   color: var(--secondary-color);
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  padding: 15px;
-  width: 80%;
-  max-width: 800px;
-  height: 60%;
-  margin: auto;
   border-radius: 15px;
+  padding-top: 0;
 }
 
-.modal > h1 {
+.modal-header > h1 {
   text-align: center;
-  padding: 0;
-  margin: 0;
+  margin:auto;
   text-transform: capitalize;
 }
-
-.modal > img {
+/* 
+.modal-body > img {
   display: block;
   margin: 10px auto;
   border: 2px solid var(--very-light-gray);
   height: 150px;
   width: auto;
-}
+} */
 
-.content-container-element {
+/* .content-container-element {
   background: var(--lighter-blue);
   width: 100%;
   height: 100%;
@@ -207,16 +202,16 @@ main, .pokemon-container {
 
 .content-container-element > p {
   padding: 10px;
-}
+} */
 
-.modal-close {
+/* .modal-close {
   border: none;
   background-color: transparent;
   color: var(--secondary-color);
   width: fit-content;
   margin-left: auto;
   padding: 0;
-}
+} */
 
 @media all and (max-width: 768px) {
   /* .pokemon-list { 
