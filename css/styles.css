@@ -70,33 +70,26 @@ a:active {
 
 .btn-primary {
   background-color: var(--primary-color);
-  border: var(--yellow-shadow);
-  color: var(--darker-secondary-color);
+  border: 1px solid var(--yellow-shadow);
+  color: var(--secondary-color);
   font-size: var(--lg-text);
   font-weight: bold;
-}
-
-.btn:hover {
-  background-color: var(--lighter-primary);
-  color: var(--darker-secondary-color)
-}
-
-button, .button {
-  /* overwrites browser defaults and resets the border  */
   font-family: inherit;
-  text-align: left;
   width: 98%;
   /* a:visited is causing .button to show #aa8439 text color */
-  text-decoration: none;
   padding: 10px;
   margin: 5px;
   border-radius: 3px;
   /* solid bottom border 2px wide */
-  border-bottom: 2px solid rgba(0,0,0,0.3);
-  transition: opacity 0.2s; 
-  opacity: 0.8;
   text-transform: capitalize;
 }
+
+.btn:hover {
+  background-color: var(--lighter-primary);
+  color: var(--darker-secondary-color);
+  border-color: 1px solid var(--yellow-shadow);
+}
+
 
 button:hover, button:focus, .button:hover, .button:focus {
   /* mouse = hand */
