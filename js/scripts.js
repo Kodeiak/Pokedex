@@ -34,11 +34,6 @@ let pokemonRepository = (function() {
     // give button content and class
     button.innerText = `${pokemon.name}`;
     $(button).addClass('btn btn-primary');
-    // $(button).attr('{
-    //   'type': 'button',
-    //   'data-bs-toggle': 'modal',
-    //   'data-bs-target': '#pokemon-modal',
-    // }');
     $(button).attr("type", "button");
     $(button).attr("data-toggle", "modal");
     $(button).attr("data-target", "#pokemon-modal");
@@ -108,63 +103,63 @@ function hideModal () {
   modal.removeClass('is-visible');
 }
 
-// Swipe gestures event listener //
+// // Swipe gestures event listener //
 
-let touchstartX = null;
-let touchstartY = null;
-let touchendX = null;
-let touchendY = null;
+// let touchstartX = null;
+// let touchstartY = null;
+// let touchendX = null;
+// let touchendY = null;
 
-window.addEventListener('touchstart', function(event) {
-  touchstartX = event.changedTouches[0].screenX;
-  touchendY = event.changedTouches[0].screenY;
-  handleGesture();
-}, false);
+// window.addEventListener('touchstart', function(event) {
+//   touchstartX = event.changedTouches[0].screenX;
+//   touchendY = event.changedTouches[0].screenY;
+//   handleGesture();
+// }, false);
 
-window.addEventListener('touchend', function(event) {
-  touchendX = event.changedTouches[0].screenX;
-  touchendY = event.changedTouches[0].screenY;
-  handleGesture
-}, false);
+// window.addEventListener('touchend', function(event) {
+//   touchendX = event.changedTouches[0].screenX;
+//   touchendY = event.changedTouches[0].screenY;
+//   handleGesture
+// }, false);
 
-// allow swipe gestures to navigate list
-function handleGesture() {
-  // find active pokemon
-  let activePokemon = document.querySelector('.active-pokemon');
+// // allow swipe gestures to navigate list
+// function handleGesture() {
+//   // find active pokemon
+//   let activePokemon = document.querySelector('.active-pokemon');
   
-  // Left swipe
-  if (touchendX <= touchstartX) {
-    // find next pokemon on the list and its index
-    let nextPokemon = activePokemon.parentNode.nextSibling.firstChild;
-    let nextPokemonIndex = getAll().findIndex(pokemon => pokemon.name === activePokemon.innerText) + 1;
+//   // Left swipe
+//   if (touchendX <= touchstartX) {
+//     // find next pokemon on the list and its index
+//     let nextPokemon = activePokemon.parentNode.nextSibling.firstChild;
+//     let nextPokemonIndex = getAll().findIndex(pokemon => pokemon.name === activePokemon.innerText) + 1;
     
-    // go to next pokemon unless at end of list
-    if (nextPokemonIndex >= getAll().length) {
-      return;
-    } else {
-      showDetails(getAll()[nextPokemonIndex]);
-      nextPokemon.classList.add('active-pokemon');
-      activePokemon.classList.remove('active-pokemon');
-    }
-  }
+//     // go to next pokemon unless at end of list
+//     if (nextPokemonIndex >= getAll().length) {
+//       return;
+//     } else {
+//       showDetails(getAll()[nextPokemonIndex]);
+//       nextPokemon.classList.add('active-pokemon');
+//       activePokemon.classList.remove('active-pokemon');
+//     }
+//   }
 
-  // Right swipe
-  if (touchendX >= touchstartX) {
-    // find previous pokemon and index
-    let previousPokemon = activePokemon.parentNode.previousSibling.firstChild;
-    let previousPokemonIndex = getAll().findIndex(pokemon => pokemon.name === activePokemon.innerText) - 1;
+//   // Right swipe
+//   if (touchendX >= touchstartX) {
+//     // find previous pokemon and index
+//     let previousPokemon = activePokemon.parentNode.previousSibling.firstChild;
+//     let previousPokemonIndex = getAll().findIndex(pokemon => pokemon.name === activePokemon.innerText) - 1;
     
-    // go to previous pokemon unless at start of list
-    if (previousPokemonIndex <= 0) {
-      return;
-    } else {
-      showDetails(getAll()[previousPokemonIndex]);
-      previousPokemon.classList.add('active-pokemon');
-      activePokemon.classList.remove('active-pokemon');
-    }
-  }
-}
-// End of swipe gesture event listener //
+//     // go to previous pokemon unless at start of list
+//     if (previousPokemonIndex <= 0) {
+//       return;
+//     } else {
+//       showDetails(getAll()[previousPokemonIndex]);
+//       previousPokemon.classList.add('active-pokemon');
+//       activePokemon.classList.remove('active-pokemon');
+//     }
+//   }
+// }
+// // End of swipe gesture event listener //
 
 return {
   getAll: getAll,

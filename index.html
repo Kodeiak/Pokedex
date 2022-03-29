@@ -13,10 +13,41 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css">
   </head>
   <body>
-    <header class="page-header">
-      <a href="index.html" class="page-header_item page-header_logo">
-          <img src="./img/pokemon-logo.svg" alt="site logo">
-      </a>
+    <header class="page-header row-fluid">
+      
+      <nav class="navbar navbar-expand-sm navbar-light bg-light justify-content-between fixed-top" role="navigation">
+        <!-- mobile menu -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#main-navbar" aria-controls="navbarToggler" aria-expanded="true" aria-label="Toggle Navigation">
+            <span class="navbar-toggler-icon float-right"></span>
+          </button>
+        </div>
+      
+        <!-- desktop menu-->
+        <div class="container">
+          <a href="index.html" class="navbar-brand page-header_logo">
+            <img src="./img/pokemon-logo.svg" alt="site logo">
+          </a>
+
+          <div class="collapse navbar-collapse text-center justify-content-around show wrap" id="main-navbar">
+            <ul class="navbar-nav flex-lg-row">
+              <li class="nav-item active px-3">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item px-3">
+                <a class="nav-link" href="https://pokeapi.co/" target="_blank">API</a>
+              </li>
+              <li class="nav-item px-3">
+                <a class="nav-link" href="https://kodeiak.github.io/portfolio-website/" target="_blank">Portfolio</a>
+              </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            </form>
+          </div>
+        </div>
+      </nav>
+      
     </header>
 
     <main>
