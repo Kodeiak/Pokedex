@@ -99,10 +99,6 @@ let pokemonRepository = (function() {
     $('.modal-body_text').empty().append(text);
   }
 
-function hideModal () {
-  modal.removeClass('is-visible');
-}
-
 // // Swipe gestures event listener //
 
 // let touchstartX = null;
@@ -168,8 +164,7 @@ return {
   showDetails: showDetails,
   loadList: loadList,
   loadDetails: loadDetails,
-  showModal: showModal,
-  hideModal: hideModal
+  showModal: showModal
 }
 })();
 
