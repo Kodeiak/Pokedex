@@ -2,9 +2,8 @@
 let pokemonRepository = (function() {
   
   let pokemonList = [];
-  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
-  // let modalContainer = document.querySelector('#modal-container');
-  let modal = $('.modal')
+  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
+  // let modalContainer = document.querySelector("#modal-container");
 
   // function to access array of Pokemon
   function getAll() {
@@ -13,7 +12,7 @@ let pokemonRepository = (function() {
 
   // add additional Pokemon as objects
   function add(pokemon) {
-    if (typeof pokemon !== 'object') {
+    if (typeof pokemon !== "object") {
       return alert("Must be an object");
     } 
     // else if (!checkProperties(pokemon, pokemonRepository.getAll()[0])) {
@@ -27,13 +26,13 @@ let pokemonRepository = (function() {
   // add Pokemon to DOM list
   function addListItem (pokemon) {
     // assign node variables for list, list items and buttons
-    let list = document.querySelector('.list-group');
-    let listItem = document.createElement('li');
-    let button = document.createElement('button');
+    let list = document.querySelector(".list-group");
+    let listItem = document.createElement("li");
+    let button = document.createElement("button");
 
     // give button content and class
     button.innerText = `${pokemon.name}`;
-    $(button).addClass('btn btn-primary');
+    $(button).addClass("btn btn-primary");
     $(button).attr("type", "button");
     $(button).attr("data-toggle", "modal");
     $(button).attr("data-target", "#pokemon-modal");
@@ -46,8 +45,8 @@ let pokemonRepository = (function() {
     list.appendChild(listItem);
 
     // listen for button click
-    button.addEventListener('click', () => {
-      button.classList.add('active-pokemon');
+    button.addEventListener("click", () => {
+      button.classList.add("active-pokemon");
       showDetails(pokemon);
     });
   }
@@ -73,12 +72,12 @@ let pokemonRepository = (function() {
       });
     }) .catch(function (e) {
       console.error(e);
-    })
+    });
   }
 
   // load details
   function loadDetails(pokemon) {
-    let url = pokemon.detailsUrl
+    let url = pokemon.detailsUrl;
     return fetch(url).then(function (response) { 
       return response.json();
     })
@@ -94,9 +93,9 @@ let pokemonRepository = (function() {
 
   function showModal (title, text, image) {
     // Clear existing modal header text and body content and add new
-    $('.modal-title').empty().append(title);
-    $('.modal-body_image').attr('src', image);
-    $('.modal-body_text').empty().append(text);
+    $(".modal-title").empty().append(title);
+    $(".modal-body_image").attr("src", image);
+    $(".modal-body_text").empty().append(text);
   }
 
 // // Swipe gestures event listener //
@@ -106,13 +105,13 @@ let pokemonRepository = (function() {
 // let touchendX = null;
 // let touchendY = null;
 
-// window.addEventListener('touchstart', function(event) {
+// window.addEventListener("touchstart", function(event) {
 //   touchstartX = event.changedTouches[0].screenX;
 //   touchendY = event.changedTouches[0].screenY;
 //   handleGesture();
 // }, false);
 
-// window.addEventListener('touchend', function(event) {
+// window.addEventListener("touchend", function(event) {
 //   touchendX = event.changedTouches[0].screenX;
 //   touchendY = event.changedTouches[0].screenY;
 //   handleGesture
@@ -121,7 +120,7 @@ let pokemonRepository = (function() {
 // // allow swipe gestures to navigate list
 // function handleGesture() {
 //   // find active pokemon
-//   let activePokemon = document.querySelector('.active-pokemon');
+//   let activePokemon = document.querySelector(".active-pokemon");
   
 //   // Left swipe
 //   if (touchendX <= touchstartX) {
@@ -134,8 +133,8 @@ let pokemonRepository = (function() {
 //       return;
 //     } else {
 //       showDetails(getAll()[nextPokemonIndex]);
-//       nextPokemon.classList.add('active-pokemon');
-//       activePokemon.classList.remove('active-pokemon');
+//       nextPokemon.classList.add("active-pokemon");
+//       activePokemon.classList.remove("active-pokemon");
 //     }
 //   }
 
@@ -150,8 +149,8 @@ let pokemonRepository = (function() {
 //       return;
 //     } else {
 //       showDetails(getAll()[previousPokemonIndex]);
-//       previousPokemon.classList.add('active-pokemon');
-//       activePokemon.classList.remove('active-pokemon');
+//       previousPokemon.classList.add("active-pokemon");
+//       activePokemon.classList.remove("active-pokemon");
 //     }
 //   }
 // }
@@ -165,12 +164,8 @@ return {
   loadList: loadList,
   loadDetails: loadDetails,
   showModal: showModal
-}
+};
 })();
-
-// Find index of active pokemon
-let index = pokemonRepository.getAll().findIndex(pokemon => pokemon.name === 'pikachu');
-
 
 pokemonRepository.loadList().then(function() {
   pokemonRepository.getAll().forEach(function(pokemon) {
