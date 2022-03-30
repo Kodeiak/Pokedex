@@ -66,7 +66,6 @@ let pokemonRepository = (function() {
     });
   }
 
-  // load details
   function loadDetails(pokemon) {
     let url = pokemon.detailsUrl;
     return fetch(url).then(function (response) { 
@@ -74,7 +73,7 @@ let pokemonRepository = (function() {
     })
     // details is object that is returned by the first then promise
     .then(function (details) {
-      pokemon.imageUrl = details.sprites.front_default;
+      pokemon.imageUrl = details.sprites.other.dream_world.front_default;
       pokemon.height = details.height;
       pokemon.types = details.types;
     }).catch(function (e) {
