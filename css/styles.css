@@ -23,12 +23,9 @@ Secondary Color (Dark Blue): #3c5aa6;
   --lg-text: 22px;
 
 }
-
-/* * used as a selector applies to ALL HTML ELEMENTS */
-* {
-  /* total width = (width - padding - border) + padding + border */
-  box-sizing: border-box;
-}
+/* * {
+  max-width: 100%;
+} */
 
 body {
   /* sans-serif is backup in case Poppins can't be used */
@@ -72,7 +69,7 @@ a:active {
   font-size: var(--lg-text);
   font-weight: bold;
   font-family: inherit;
-  width: 98%;
+  width: 100%;
   /* a:visited is causing .button to show #aa8439 text color */
   padding: 10px;
   margin: 5px;
@@ -130,7 +127,7 @@ button:hover, button:focus, .button:hover, .button:focus {
   background: var(--very-light-gray);
   color: var(--secondary-color);
   border-radius: 15px;
-  padding-top: 0;
+  /* padding-top: 0; */
 }
 
 .modal-header > h1 {
@@ -139,17 +136,24 @@ button:hover, button:focus, .button:hover, .button:focus {
   text-transform: capitalize;
 }
 
+img {
+  max-width: 100%;
+}
+
+#modal-header_close {
+  position:absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
+
 @media all and (max-width: 768px) {
 
   main {
     margin-top: 160px;
   }
 
-  .button {
-    width: 97%;
-  }
 
-  .modal {
-    height: 80%;
-  }
 }
