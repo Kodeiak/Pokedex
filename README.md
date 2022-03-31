@@ -11,5 +11,5 @@ data from an external API and enables the viewing of data points in detail.
   - BootStrap
 
 ## API 
-This project uses the API and documentation from (https://www.pokeapi.co, "PokeApi").
+This project uses the API and documentation from (https://www.pokeapi.co "PokeApi").
 
